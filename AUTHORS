@@ -1,0 +1,13 @@
+* Alberto Alonso Pinto <rydencillo@gmail.com> (2009-2010)
+  Código fuente inicial:
+   - Edición de linea.
+   - Historial.
+   - Comodines y sugerencias.
+   - Terminal.
+   - Prompt.
+   - writef.
+   - Ejecución de comandos y comandos internos.
+   - Procesado de la línea con pipes, redirección de salida estándar, SPAWN y comillas.
+   - Variables.
+   - Algunas combinaciones de teclas.
+   - Aliases.

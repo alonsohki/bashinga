@@ -1,0 +1,66 @@
+Características soportadas actualmente:
+
+* Edición de linea
+  - Desplazar el cursor: izquierda, derecha, inicio, fin.
+  - Inserción de texto en cualquier punto.
+  - Eliminado: backspace y suprimir.
+
+* Historial
+  - Comando interno history.
+  - Navegación por el historial: flecha arriba, abajo, repág, avpág.
+  - Carga y almacenamiento del historial en el fichero .lanzador_history.
+  - Ejecución del último comando que "empieza por" mediante !comando.
+  - Se puede cambiar el tamaño máximo mediante la variable de entorno HISTORY_LENGTH.
+
+* Comodines y sugerencias
+ - Sugerencias al pulsar TAB.
+ - Autocompletado en la línea cuando sólo hay una sugerencia o todas las
+   sugerencias comienzan igual.
+ - Paginado cuando hay muchas sugerencias.
+ - Reemplazo al ejecutar un comando con comodines (*, ?).
+ - Búsqueda de binarios en el PATH.
+ - Mostrado de las sugerencias ordenadas.
+
+* Terminal
+  - Procesamiento y ejecución de secuencias de escape.
+  - vt100.
+
+* Prompt
+  - Interpreta códigos de escape ( \n, \t, \033, ... ).
+  - Códigos especiales: \u (usuario), \H (host), \h (host acortado),
+                        \w (directorio), \W (directorio acortado).
+  - Se puede cambiar modificando la variable de entorno PROMPT.
+
+* Entrada/Salida
+  - writef: Escritura en un descriptor, como write, pero con formatos a
+    la printf.
+
+* Comandos internos
+  - Compatibles con programas del sistema operativo: history | grep ls
+  - cd, exit, history, logout, alias, unalias.
+
+* Procesado de la línea
+  - programa1 | programa2 | ... | programaN
+  - Redirección de salida estándar: programa >fichero.txt
+  - Redirección de salida estándar agregada: programa >>fichero.txt
+  - Ejecución en modo SPAWN: programa &
+  - Soporte para "argumentos   entre      comillas"
+
+* Variables
+  - Asignación: VAR=valor ó VAR="valor" ó VAR='valor'.
+  - Obtención: echo $VAR.
+  - Variable especial: $?.
+
+* Combinaciones de teclas
+  - Cancelación de la escritura del comando actual mediante CTRL+C (usando señales).
+  - Salir con CTRL+D.
+  - Limpiar pantalla con CTRL+L.
+  - Limpiar línea por la derecha con CTRL+K.
+  - Función de backspace con CTRL+H.
+
+* Aliases
+  - alias nombre='comando' ó alias nombre=comando ó alias nombre="comando"
+  - alias nombre lista su valor.
+  - alias lista todos los aliases.
+  - Sustitución del valor de los aliases en la línea escrita al enviarla.
+  - unalias para eliminar aliases.

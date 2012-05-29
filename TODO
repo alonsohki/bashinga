@@ -1,0 +1,70 @@
+-= Nuevas características =-
+* Mayor control sobre los procesos ejecutados en modo SPAWN:
+  Comandos internos fg, bg, jobs.
+  Soporte para interrumpir un programa en modo run con CTRL+Z.
+  Sustitución de %[job id] para ejecutar comandos como kill -9 %1.
+
+* Redirección de descriptores como en bash
+  programa 2>/dev/null (Redirigir la salida de errores al /dev/null).
+  programa &>/dev/null (Redirigir las salidas estándar y de errores al /dev/null).
+  programa 2>&1 (Redirigir la salida de errores a la entrada estándar.
+
+* Redirección de la entrada estándar
+  cat <fichero1.txt >fichero2.txt
+  cat >fichero.txt <<EOF
+
+* Ejecución de `programas`
+  Ejecutar un programa y sustituir su salida estándar en la linea actual.
+
+* Fichero "rc"
+  Fichero que contiene una instrucción por linea y que se ejecutan al ejecutar
+  el lanzador. Podría llamarse .lanzador_rc y podría contener elementos útiles
+  como aliases iniciales.
+
+* Comandos internos para modificar las variables de entorno
+  export, declare... Podría ser útil para modificar el PROMPT.
+
+-= Mejoras de las funcionalidades existentes =-
+* Refactorización del código
+Hay mucho código duplicado y funciones extremadamente grandes que deberían
+ser separadas en funciones más pequeñas. Por ejemplo, el código de los aliases
+es prácticamente una copia del código de las variables, aunque los alises soportan
+el borrado de un alias y las variables no. La funcionalidad de tabla hash debería
+ser movida fuera.
+
+* Mejorar la función hash
+No genera buenos hashes, debería aumentar la dispersión del hash.
+
+* Código del main demasiado grande
+El código del main() debería ser movido a su propio TAD, exportando elementos como
+los descriptores del historial o las variables.
+
+* Mejorar el intérprete de la línea introducida
+Cuando rediriges la salida estándar, el nombre del fichero debe estar inmediatamente
+después del caracter '>', no aceptando blancos en medio como por ejemplo:
+programa > fichero.txt. Esto no debería ser así.
+El caracter = debería ser procesado como un separador al igual que lo es el espacio,
+siendo este añadido al parámetro de la izquierda. Esto evitaría que haya que tener
+en cuenta todos los casos en, por ejemplo, la asignación de variables o aliases:
+VAR=valor
+VAR="valor compuesto"
+VAR='valor compuesto'
+
+* Reemplazar el algoritmo de ordenado de las sugerencias
+Actualmente está utilizando un bubble sort. Debería implementar algún algoritmo
+más eficiente como quicksort.
+
+* Mejorar la eficiencia de sustitución de variables, comodines y aliases.
+Actualmente para sustituir en la linea las variables, comodines y aliases, se
+interpreta la linea y se reconstruye en una cadena de caracteres con los nuevos
+datos. Debería interpretarse una sóla vez y modificar la estructura de información
+de la linea directamente.
+
+* El algoritmo match es GPL
+El algoritmo para hacer match de comodines está licenciado con GPL, incompatible con
+la licencia de este programa. Se debería reescribir un algoritmo nuevo o relicenciar
+la aplicación con GPL (mala idea).
+
+* Las sugerencias no siempre funcionan bien
+Escribir / y pulsar TAB no mostrará sugerencias.
+
