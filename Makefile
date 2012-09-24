@@ -1,4 +1,4 @@
-PROGRAM=lanzador
+PROGRAM=bashinga
 OBJS=main.o io.o prompt.o comandos.o infolinea.o comodines.o terminal.o historial.o match.o variables.o aliases.o
 CFLAGS=-pipe -Wall -g
 CC=gcc

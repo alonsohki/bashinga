@@ -4,7 +4,7 @@
 #define MAX_ARGS 64
 #define PROMPT_POR_DEFECTO "> "
 #define MAX_HISTORIAL 100
-#define FICHERO_HISTORIAL "./.lanzador_history"
+#define FICHERO_HISTORIAL "./.bashinga_history"
 #define MAX_PROGRAMAS_POR_LINEA 5
 #define VARIABLES_TABLA_HASH_TAMANYO 512
 #define ALIASES_TABLA_HASH_TAMANYO 512
